@@ -1,0 +1,17 @@
+{
+    "YOU_ARE_ALREADY_REGISTEDS!!!": "you are already registereds!!!",
+    "THANKS_FOR_REGISTRATION...":"thanks for registration...",
+    "PASSOWRD_AND_ REPEATPASSWORD_NOT_MATCH" :"passowrd and repeatpassword not match",
+    "YOU_ARE_NOT_REGISTERED_USER..." : "you are not registered user...",
+    "YOUR_ACCOUNT_IS_ALREADY_VERIFIED..." :"your account is already verified...",
+    "OTP_HAS_EXPIRED!!!" :"otp has expired!!!",
+    "YOUR_PROFILE_IS_VERIFIRD_SUCCESSFULLY...":"your profile is verifird successfully...",
+    "YOUR_OTP_IS INVALID...":"your otp is invalid...",
+    "NEW_PASSWORD_AND_REPEAT_PASSORD_DOES'T_MATCH":"new password and repeat passord does't match",
+    "YOUR_OTP_IS_WRONG":"your otp is wrong",
+    "YOUR_OTP_IS_EXPIRED!!!" :"your otp is expired!!!" 
+
+}
+
+
+
