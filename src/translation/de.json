@@ -1,13 +1,13 @@
 {
     "REGISTERED": "du bist bereits registriert",
-    "THANK_REGISTER...":"danke für die registrierung",
-    "PASSOWRD_AND_REPEATPASSWORD" :"passowrd und repeatpassword passsen nicht zusammen" ,
+    "THANK_REGISTER":"danke für die registrierung",
+    "PASSWORD_AND_REPEATPASSWORD" :"passowrd und repeatpassword passsen nicht zusammen" ,
     "NOT_REGISTERED" : "du bist nicht registrierter benutzer",
     "ALREADY_VERIFIED" :"dein konto ist bereits verifiziert",
     "OTP_EXPIRED" :"die otp ist abgelaufen",
     "VERIFIED_SUCCESSFULLY":"dein profil ist erfolgreich verifiziert",
     "OTP_INVALID":"deine otp ist ungültig",
-    "PASSORD_DOES'T_MATCH":"das neue passwort und wiederholung passord stimmen nicht überein",
+    "PASSWORD_DOES'T_MATCH":"das neue passwort und wiederholung passord stimmen nicht überein",
     "WRONG_OTP":"deine otp ist falsch",
     "RECORDS_NOT":"Ich konnte keine Einträge finden."
 }

@@ -1,23 +1,46 @@
 const db = require("../models/index.js");
 const user = db.user;
 const secretkey = "secreatkey";
-const otpGenerator = require("../helpers/otpgenerator.helper.js");
 const moment = require("moment");
 const { Op } = require("sequelize");
 const jwt = require("jsonwebtoken");
 const sendMail = require("../helpers/sendMail.helper.js");
-
+const { otpGenrator, passwordEncrpt } = require("../helpers/utils.js");
 
 
 
 const userRegistration = async (req, res) => {
   try {
     const body = req.body;
-    const fineUser = await user.findOne({ where: { email: body.email } });
-    if (fineUser) {
+    const findUser = await user.findOne({ where: { email: body.email } });
+
+    if (findUser && findUser.status == "Active") {
       return res
         .status(200)
         .send({ status: true, message: res.__("REGISTERED") });
+    } else if (findUser && findUser.status == "Inacitve") {
+      let expireDate = moment().add(5, "minutes");
+      let otp = otpGenrator(4);
+      let obj = { firstname: findUser.firstname, otp: otp };
+      const updateRecords = await user.update(
+        {
+          firstname: body.firstname,
+          lastname: body.lastname,
+          password: await passwordEncrpt(body.password),
+          repeatpassword: body.repeatpassword,
+          otp: otp,
+          otp_expiry: expireDate,
+        },
+        {
+          where: {
+            email: body.email,
+          },
+        }
+      );
+      await sendMail(global.config.FROM_EMAIL, body.email, obj);
+      return res
+        .status(200)
+        .send({ status: true, message: res.__("THANK_REGISTER") });
     } else {
       if (body.password == body.repeatpassword) {
         let expireDate = moment().add(5, "minutes");
@@ -25,18 +48,20 @@ const userRegistration = async (req, res) => {
           firstname: body.firstname,
           lastname: body.lastname,
           email: body.email,
-          password: body.password,
+          password: await passwordEncrpt(body.password),
           repeatpassword: body.repeatpassword,
-          otp: otpGenerator(4),
+          otp: otpGenrator(4),
           otp_expiry: expireDate,
         });
-        let obj = { userName: createUser.userName, otp: createUser.otp };
+        let obj = { firstname: createUser.firstname, otp: createUser.otp };
         await sendMail(global.config.FROM_EMAIL, createUser.email, obj);
-        return res.json({ message: res.__("THANK_REGISTER") });
+        return res
+          .status(200)
+          .send({ status: true, message: res.__("THANK_REGISTER") });
       } else {
         return res.status(200).send({
           status: true,
-          message: res.__("PASSOWRD_AND_REPEATPASSWORD"),
+          message: res.__("PASSWORD_AND_REPEATPASSWORD"),
         });
       }
     }
@@ -68,37 +93,39 @@ const userlogin = async (req, res) => {
 const userVerify = async (req, res) => {
   try {
     const data = await user.findOne({ where: { email: req.body.email } });
-      if(!data){
-         return res.status(200).send({status : true,message :res.__("RECORDS_NOT")})
-      }else{
-    const currentTime = moment().utc();
-    if (data.status == "Active") {
-      return res.json({ message: res.__("ALREADY_VERIFIED") });
+    if (!data) {
+      return res
+        .status(200)
+        .send({ status: true, message: res.__("RECORDS_NOT") });
     } else {
-      if (data.otp_expiretime < currentTime) {
-        return res.json({ message: res.__("OTP_EXPIRED") });
+      const currentTime = moment().utc();
+      if (data.status == "Active") {
+        return res.json({ message: res.__("ALREADY_VERIFIED") });
       } else {
-        if (data.otp == req.params.otp) {
-          const dataVerify = await user.update(
-            {
-              is_verify: true,
-              status: "Active",
-            },
-            {
-              where: {
-                email : data.email,
-              },
-            }
-          );
-          return res.json({
-            message: res.__("VERIFIED_SUCCESSFULLY"),
-          });
+        if (data.otp_expiretime < currentTime) {
+          return res.json({ message: res.__("OTP_EXPIRED") });
         } else {
-          return res.json({ message: res.__("OTP_INVALID") });
+          if (data.otp == req.params.otp) {
+            const dataVerify = await user.update(
+              {
+                is_verify: true,
+                status: "Active",
+              },
+              {
+                where: {
+                  email: data.email,
+                },
+              }
+            );
+            return res.json({
+              message: res.__("VERIFIED_SUCCESSFULLY"),
+            });
+          } else {
+            return res.json({ message: res.__("OTP_INVALID") });
+          }
         }
       }
     }
-  }
   } catch (error) {
     console.log(error);
     return res.status(400).send({ status: false, message: error.message });
@@ -133,7 +160,7 @@ const forgotPassword = async (req, res) => {
       if (find.otp == req.params.otp) {
         if (req.body.newpassword === req.body.repeatpassword) {
           let data = await user.update(
-            { password: req.body.newpassword },
+            { password: await passwordEncrpt(req.body.newpassword) },
             {
               where: {
                 email: req.body.email,
@@ -143,7 +170,7 @@ const forgotPassword = async (req, res) => {
           return res.json({ data });
         } else {
           return res.json({
-            message: res.__("PASSORD_DOES'T_MATCH"),
+            message: res.__("PASSWORD_DOES'T_MATCH"),
           });
         }
       } else {

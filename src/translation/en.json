@@ -1,19 +1,14 @@
 {
-    "REGISTERED": "you are already registereds",
-    "THANK_REGISTER...":"thanks for registration",
-    "PASSOWRD_AND_REPEATPASSWORD":"passowrd and repeatpassword not match",
-    "NOT_REGISTERED..." : "you are not registered user",
-    "ALREADY_VERIFIED" :"your account is already verified",
-    "OTP_EXPIRED!!!" :"otp has expired!!!",
-    "VERIFIED_SUCCESSFULLY":"your profile is verifird successfully",
-    "OTP_INVALID":"your otp is invalid",
-    "PASSORD_DOES'T_MATCH":"new password and repeat passord does't match",
-    "WRONG_OTP":"your otp is wrong",
-    "RECORDS_NOT" : "records not found"
-
-
+	"REGISTERED": "you are already registered",
+	"THANK_REGISTER": "thanks for registration",
+	"PASSWORD_AND_REPEATPASSWORD": "passowrd and repeatpassword not match",
+	"NOT_REGISTERED...": "you are not registered user",
+	"ALREADY_VERIFIED": "your account is already verified",
+	"OTP_EXPIRED!!!": "otp has expired!!!",
+	"VERIFIED_SUCCESSFULLY": "your profile is verifird successfully",
+	"OTP_INVALID": "your otp is invalid",
+	"PASSWORD_DOES'T_MATCH": "new password and repeat passord does't match",
+	"WRONG_OTP": "your otp is wrong",
+	"RECORDS_NOT": "records not found",
+	"REGISTERD_SUCCESSFUL": "REGISTERD_SUCCESSFUL"
 }
-
-
-
-

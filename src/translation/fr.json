@@ -1,12 +1,12 @@
 {
     "REGISTERED": "vous êtes déjà enregistré",
     "THANK_REGISTER":"merci pour l'inscription",
-    "PASSOWRD_AND_REPEATPASSWORD" :"mot de passe et répéter mot de passe ne correspondent pas" ,
+    "PASSWORD_AND_REPEATPASSWORD":"mot de passe et répéter mot de passe ne correspondent pas" ,
     "NOT_REGISTERED" : "vous n'êtes pas utilisateur enregistré",
     "ALREADY_VERIFIED" :"votre compte est déjà vérifié",
     "VERIFIED_SUCCESSFULLY":"votre profil est verifird avec succès",
     "OTP_INVALID":"votre otp n'est pas valide",
-    "PASSORD_DOES'T_MATCH":"nouveau mot de passe et répéter passord ne correspondent pas",
+    "PASSWORD_DOES'T_MATCH":"nouveau mot de passe et répéter passord ne correspondent pas",
     "WRONG_OTP":"votre otp est incorrect",
     "OTP_EXPIRED" :"votre otp a expiré ",
     "RECORDS_NOT" : "Aucun enregistrement trouvé."

@@ -1,41 +1,86 @@
-const {DataTypes} = require("sequelize")
+const {DataTypes,Model} = require("sequelize");
 
 
-module.exports = (sequelize,Sequelize)=>{
 
-const user  = sequelize.define("user",{
+module.exports = (sequelize)=>{
+
+class user extends Model {
+  
+}
+user.status = {ACTIVE :"active",INACTIVE :"Inacitve"}
+user.init({
    firstname : {
-    type: DataTypes.STRING,
-    allowNull : false
+      type: DataTypes.STRING,
+      allowNull : false
+     },
+   lastname :{
+      type : DataTypes.STRING,
+      allowNull: false
    },
- lastname :{
-    type : DataTypes.STRING,
-    allowNull: false
- },
- email :{
-    type : DataTypes.STRING,
-    allowNull : false
- },
- password :{
-    type : DataTypes.STRING,
-    allowNull : false
- },
- otp :{
-    type : DataTypes.INTEGER
- },
- otp_expiry :{
-    type : DataTypes.DATE
- },
-status :{
-    type : DataTypes.ENUM("Active","InActive"),
-    defaultValue :"InActive"
-},is_verify : {
-    type : DataTypes.BOOLEAN,
-    defaultValue : 0 
-}
-},{
-    tableName: 'user_tb'
-})
- return user
+   email :{
+      type : DataTypes.STRING,
+      allowNull : false
+   },
+   password :{
+      type : DataTypes.STRING,
+      allowNull : false
+   },
+   otp :{
+      type : DataTypes.INTEGER
+   },
+   otp_expiry :{
+      type : DataTypes.DATE
+   },
+  status :{
+      type : DataTypes.ENUM,
+      values : Object.values(user.status),
+      defaultValue : user.status.INACTIVE
+  },is_verify : {
+      type : DataTypes.BOOLEAN,
+      defaultValue : 0 
+  }
+}, {
+  sequelize, 
+  tableName: 'user_tb'
+});
+     return user
 }
 
+
+// module.exports = (sequelize,Sequelize)=>{
+
+// const user  = sequelize.define("user",{
+//    firstname : {
+//     type: DataTypes.STRING,
+//     allowNull : false
+//    },
+//  lastname :{
+//     type : DataTypes.STRING,
+//     allowNull: false
+//  },
+//  email :{
+//     type : DataTypes.STRING,
+//     allowNull : false
+//  },
+//  password :{
+//     type : DataTypes.STRING,
+//     allowNull : false
+//  },
+//  otp :{
+//     type : DataTypes.INTEGER
+//  },
+//  otp_expiry :{
+//     type : DataTypes.DATE
+//  },
+// status :{
+//     type : DataTypes.ENUM("Active","InActive"),
+//     defaultValue :"InActive"
+// },is_verify : {
+//     type : DataTypes.BOOLEAN,
+//     defaultValue : 0 
+// }
+// },{
+//     tableName: 'user_tb'
+// })
+//  return user
+// }
