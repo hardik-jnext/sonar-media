@@ -2,7 +2,7 @@ const {celebrate,Joi,Segments,errors} = require("celebrate")
 
 
 
-const registerUservalid = {
+const registerUservalid =()=>{ celebrate({
     [Segments.BODY]: Joi.object().keys({
        
         firstname :Joi.string().required(),
@@ -11,34 +11,36 @@ const registerUservalid = {
         password : Joi.string().required(),
         repeatpassword : Joi.string().required()
     })
-    }
+    })
+   }
     
 
-    const loginUservalid = {
+    const loginUservalid = ()=>{  celebrate({
         [Segments.BODY] : Joi.object().keys({
           email : Joi.string().required(),
           password : Joi.string().required(), 
         })
      
-     }
+     })}
      
-     const userVerifyvalid = {
+     const userVerifyvalid =()=>{ celebrate({
         [Segments.BODY] : Joi.object().keys({
             email : Joi.string().required(),
     
         }),[Segments.PARAMS]: {
             otp : Joi.number().integer()
         }
-    }
+    })}
+
      
-     const forgotPasswordmailValid = {
+     const forgotPasswordmailValid = () =>{ celebrate({
         [Segments.BODY] : Joi.object().keys({
            email : Joi.string().required(),
         })
-     }
+     })}
      
 
-     const forgetPasswordvalid = {
+     const forgetPasswordvalid = ()=>{ celebrate({
         [Segments.BODY] : Joi.object().keys({
            email : Joi.string().required(),
            newpassword : Joi.string().required(),
@@ -47,7 +49,7 @@ const registerUservalid = {
           otp :Joi.number().integer()
         
         }
-     }
+     })}
      
 
 

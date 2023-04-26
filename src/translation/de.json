@@ -1,16 +1,15 @@
 {
-    "YOU_ARE_ALREADY_REGISTEDS!!!": "du bist bereits registriert !!!",
-    "THANKS_FOR_REGISTRATION...":"danke für die registrierung...",
-    "PASSOWRD_AND_ REPEATPASSWORD_NOT_MATCH" :"passowrd und repeatpassword passsen nicht zusammen" ,
-    "YOU_ARE_NOT_REGISTERED_USER..." : "du bist nicht registrierter benutzer...",
-    "YOUR_ACCOUNT_IS_ALREADY_VERIFIED..." :"dein konto ist bereits verifiziert...",
-    "OTP_HAS_EXPIRED!!!" :"die otp ist abgelaufen !!!",
-    "YOUR_PROFILE_IS_VERIFIRD_SUCCESSFULLY...":"dein profil ist erfolgreich verifiziert...",
-    "YOUR_OTP_IS INVALID...":"deine otp ist ungültig...",
-    "NEW_PASSWORD_AND_REPEAT_PASSORD_DOES'T_MATCH":"das neue passwort und wiederholung passord stimmen nicht überein",
-    "YOUR_OTP_IS_WRONG":"deine otp ist falsch",
-    "YOUR_OTP_IS_EXPIRED!!!" :"deine otp ist abgelaufen!!!"
-
+    "REGISTERED": "du bist bereits registriert",
+    "THANK_REGISTER...":"danke für die registrierung",
+    "PASSOWRD_AND_REPEATPASSWORD" :"passowrd und repeatpassword passsen nicht zusammen" ,
+    "NOT_REGISTERED" : "du bist nicht registrierter benutzer",
+    "ALREADY_VERIFIED" :"dein konto ist bereits verifiziert",
+    "OTP_EXPIRED" :"die otp ist abgelaufen",
+    "VERIFIED_SUCCESSFULLY":"dein profil ist erfolgreich verifiziert",
+    "OTP_INVALID":"deine otp ist ungültig",
+    "PASSORD_DOES'T_MATCH":"das neue passwort und wiederholung passord stimmen nicht überein",
+    "WRONG_OTP":"deine otp ist falsch",
+    "RECORDS_NOT":"Ich konnte keine Einträge finden."
 }
 
 

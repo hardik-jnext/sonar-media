@@ -5,11 +5,11 @@ const Handlebars = require('handlebars')
 require("dotenv").config();
 
 
-const registerMail = (from,to,data)=>{
+const sendMail = (from,to,data)=>{
 
     let transporter = nodemailer.createTransport({
-        host: "smtp.sendgrid.net",
-        port: 465,
+        host: global.config.EMAIL_HOST,
+        port: global.config.EMAIL_PORT,
         secure: true,
         auth: {
           user: "apikey",
@@ -37,4 +37,4 @@ const registerMail = (from,to,data)=>{
       //   console.log("Message sent:", info);
       });
 }
-module.exports = registerMail
+module.exports = sendMail

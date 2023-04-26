@@ -1,0 +1,26 @@
+{
+    "development": {
+        "use_env_variable": false,
+        "DB": {
+            "username": "root",
+            "password": "",
+            "database": "Sonar_media_practice_db",
+            "host": "localhost",
+            "dialect": "mysql",
+            "queueLimit": 0,
+            "connectionLimit": 0,
+            "logging": false,
+            "port": 3306
+        },
+        "PORT": "5000",
+        "JWT_SECRET": "jwt_token_secret",
+        "FROM_EMAIL": "dishang.jnext@gmail.com",
+        "EMAIL_HOST": "smtp.sendgrid.net",
+        "EMAIL_PORT": 465   
+    }
+}
+
+
+
+
+
