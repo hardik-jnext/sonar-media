@@ -8,19 +8,15 @@
             "host": "localhost",
             "dialect": "mysql",
             "queueLimit": 0,
-            "connectionLimit": 0,
+            "connectionLimit":0,
             "logging": false,
             "port": 3306
+            
         },
-        "PORT": "3000",
+        "PORT": 3000,
         "JWT_SECRET": "jwt_token_secret",
         "FROM_EMAIL": "dishang.jnext@gmail.com",
         "EMAIL_HOST": "smtp.sendgrid.net",
-        "EMAIL_PORT": 465   
+        "EMAIL_PORT": 465
     }
 }
-
-
-
-
-

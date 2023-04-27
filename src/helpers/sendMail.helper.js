@@ -1,5 +1,5 @@
 const nodemailer = require("nodemailer");
-const fs = require("file-system");
+const fs = require("fs");
 const path = require("path");
 const Handlebars = require("handlebars");
 require("dotenv").config();

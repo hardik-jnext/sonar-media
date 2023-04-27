@@ -1,6 +1,6 @@
 
 const path = require('path')
-const fs = require('file-system')
+const fs = require("fs")
 
 const env = process.env.NODE_ENV || "development"
 const config = require("../Config/config.json")[env]
@@ -20,7 +20,6 @@ db = {}
 db.sequelize = sequelize
 db.Sequelize = Sequelize
 
-
 fs
  .readdirSync(__dirname)
     .filter(file => {
@@ -32,7 +31,15 @@ fs
     });
 
 
+Object.keys(db).forEach(modelName =>{
+  if(db[modelName].associate){
+    db[modelName].associate(db)
+  }
+})
 
+
+db.category.hasMany(db.post,{foreignKey:'category_id'})
+db.post.belongsTo(db.category)
 
 try {
     sequelize.authenticate();

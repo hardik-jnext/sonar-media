@@ -12,7 +12,7 @@ const  hadleErrorMessage  = require('./src/middleware/errorHandle.js')
 
 app.use(body.json())
 
-db.sequelize.sync({force : false})
+db.sequelize.sync({alter : true})
 
 
 
