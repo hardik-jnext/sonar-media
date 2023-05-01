@@ -14,7 +14,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      caption: {
+      description: {
         type: DataTypes.STRING,
         allowNull: true,
       },
@@ -26,7 +26,8 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
       },
       comment: {
-        type: DataTypes.STRING,
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
       },
       status: {
         type: DataTypes.ENUM("schedule", "publish", "deleted", "draft"),

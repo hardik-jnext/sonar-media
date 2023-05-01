@@ -20,8 +20,10 @@
     "moment": "^2.29.4",
     "mysql2": "^3.2.4",
     "nodemailer": "^6.9.1",
-    "nodemon": "^2.0.22",
     "pbkdf2-password-hash": "^3.1.0",
     "sequelize": "^6.31.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
   }
 }

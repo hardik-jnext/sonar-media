@@ -141,6 +141,7 @@ const forgetPasswordmail = async (req, res) => {
       { where: { email: req.body.email } }
     );
     const find = await user.findOne({ where: { email: req.body.email } });
+
     let obj = { firstname: find.firstname, otp: genrateOtp };
 
     await sendMail(global.config.FROM_EMAIL, find.email, obj);
@@ -150,12 +151,10 @@ const forgetPasswordmail = async (req, res) => {
     return res.status(400).send({ status: false, message: error.message });
   }
 };
-
 const forgotPassword = async (req, res) => {
   try {
     let find = await user.findOne({ where: { email: req.body.email } });
     let currentdate = moment().utc();
-
     if (find.expireOtpTime > currentdate) {
       if (find.otp == req.params.otp) {
         if (req.body.newpassword === req.body.repeatpassword) {

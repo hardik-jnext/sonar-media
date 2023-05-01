@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 let secretkey = "token";
-let db = require("../config/Config.js");
+const db = require("../models/index.js");
 let user = db.user;
 
 const userAuth = async(req, res, next) => {
