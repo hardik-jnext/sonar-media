@@ -18,7 +18,8 @@ const userAuth = async(req, res, next) => {
       req.user = JSON.parse(JSON.stringify(userData));
     next();
   } catch (error) {
-    res.send("Token not found");
+    console.log(error)
+    res.json({message:"Token not found"});
   }
 };
 module.exports = userAuth;

@@ -12,7 +12,6 @@ module.exports = {
     })
     }),
    
-    
 
      loginUservalid : ()=> celebrate({
         [Segments.BODY] : Joi.object().keys({

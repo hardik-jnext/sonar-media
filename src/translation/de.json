@@ -9,7 +9,8 @@
     "OTP_INVALID":"deine otp ist ungültig",
     "PASSWORD_DOES'T_MATCH":"das neue passwort und wiederholung passord stimmen nicht überein",
     "WRONG_OTP":"deine otp ist falsch",
-    "RECORDS_NOT":"Ich konnte keine Einträge finden."
+    "RECORDS_NOT":"Ich konnte keine Einträge finden.",
+	"REGISTERD_SUCCESSFUL": "Erfolgreich registriert"
 }
 
 

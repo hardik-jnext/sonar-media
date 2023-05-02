@@ -2,7 +2,7 @@
 	"REGISTERED": "you are already registered",
 	"THANK_REGISTER": "thanks for registration",
 	"PASSWORD_AND_REPEATPASSWORD": "passowrd and repeatpassword not match",
-	"NOT_REGISTERED...": "you are not registered user",
+	"NOT_REGISTERED": "you are not registered user",
 	"ALREADY_VERIFIED": "your account is already verified",
 	"OTP_EXPIRED!!!": "otp has expired!!!",
 	"VERIFIED_SUCCESSFULLY": "your profile is verifird successfully",
@@ -10,5 +10,10 @@
 	"PASSWORD_DOES'T_MATCH": "new password and repeat passord does't match",
 	"WRONG_OTP": "your otp is wrong",
 	"RECORDS_NOT": "records not found",
-	"REGISTERD_SUCCESSFUL": "REGISTERD_SUCCESSFUL"
+	"REGISTERD_SUCCESSFUL": "registerd successful",
+	"YOUR_OTP_IS_EXPIRED": "your otp is expired",
+	"OTP_SEND": "",
+	"PASSWORD_UPDATE": "",
+	"INVALID_PASSWORD": "INVALID_PASSWORD",
+	"PAASWORD_UPDATE": "PAASWORD_UPDATE"
 }

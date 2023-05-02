@@ -16,7 +16,7 @@ let passwordEncrpt = async(password) =>{
 
 }
 
-let comparePassord = async(oldPassword,newPassword)=>{
+let comparePassword = async(oldPassword,newPassword)=>{
  return await passwordHash.compare(newPassword,oldPassword)
 }
 
@@ -25,5 +25,5 @@ let comparePassord = async(oldPassword,newPassword)=>{
 
 
 
-module.exports = {otpGenrator,passwordEncrpt}
+module.exports = {otpGenrator,passwordEncrpt,comparePassword}
 

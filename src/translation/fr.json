@@ -9,7 +9,8 @@
     "PASSWORD_DOES'T_MATCH":"nouveau mot de passe et répéter passord ne correspondent pas",
     "WRONG_OTP":"votre otp est incorrect",
     "OTP_EXPIRED" :"votre otp a expiré ",
-    "RECORDS_NOT" : "Aucun enregistrement trouvé."
+    "RECORDS_NOT" : "Aucun enregistrement trouvé.",
+    "REGISTERD_SUCCESSFUL":"Inscription réussie"
 }
 
 

@@ -1,13 +1,15 @@
 const db = require("../models/index.js");
 const user = db.user;
-const secretkey = "secreatkey";
+const secretkey = "token";
 const moment = require("moment");
 const { Op } = require("sequelize");
 const jwt = require("jsonwebtoken");
 const sendMail = require("../helpers/sendMail.helper.js");
-const { otpGenrator, passwordEncrpt } = require("../helpers/utils.js");
-
-
+const {
+  otpGenrator,
+  passwordEncrpt,
+  comparePassword,
+} = require("../helpers/utils.js");
 
 const userRegistration = async (req, res) => {
   try {
@@ -75,15 +77,22 @@ const userlogin = async (req, res) => {
   try {
     const findRecord = await user.findOne({
       where: {
-        [Op.and]: [{ email: req.body.email }, { password: req.body.password }],
+        email: req.body.email,
       },
       raw: true,
     });
+
     if (!findRecord) {
       return res.json({ message: res.__("NOT_REGISTERED") });
     }
-    let token = jwt.sign(findRecord, secretkey);
-    return res.json({ message: token });
+    if (await comparePassword(findRecord.password, req.body.password)) {
+      let token = jwt.sign(findRecord, secretkey);
+      return res.json({ message: token });
+    } else {
+      return res
+        .status(200)
+        .send({ status: true, message: res.__("INVALID_PASSWORD") });
+    }
   } catch (error) {
     console.log(error);
     return res.status(400).send({ status: false, message: error.message });
@@ -135,7 +144,8 @@ const userVerify = async (req, res) => {
 const forgetPasswordmail = async (req, res) => {
   try {
     let expireDate = moment().add(5, "minutes");
-    let genrateOtp = otpGenerator(4);
+    console.log(expireDate);
+    let genrateOtp = otpGenrator(4);
     const data = await user.update(
       { otp: genrateOtp, otp_expiretime: expireDate },
       { where: { email: req.body.email } }
@@ -145,7 +155,7 @@ const forgetPasswordmail = async (req, res) => {
     let obj = { firstname: find.firstname, otp: genrateOtp };
 
     await sendMail(global.config.FROM_EMAIL, find.email, obj);
-    return res.json({ data });
+    return res.status(200).send({ status: true, message: res.__("OTP_SEND") });
   } catch (error) {
     console.log(error);
     return res.status(400).send({ status: false, message: error.message });
@@ -155,8 +165,8 @@ const forgotPassword = async (req, res) => {
   try {
     let find = await user.findOne({ where: { email: req.body.email } });
     let currentdate = moment().utc();
-    if (find.expireOtpTime > currentdate) {
-      if (find.otp == req.params.otp) {
+    if (find.otp == req.params.otp) {
+      if (find.otp_expiry > currentdate) {
         if (req.body.newpassword === req.body.repeatpassword) {
           let data = await user.update(
             { password: await passwordEncrpt(req.body.newpassword) },
@@ -166,17 +176,24 @@ const forgotPassword = async (req, res) => {
               },
             }
           );
-          return res.json({ data });
+          return res
+            .status(200)
+            .send({ status: 200, message: res.__("PAASWORD_UPDATE") });
         } else {
-          return res.json({
+          return res.status(200).send({
+            status: true,
             message: res.__("PASSWORD_DOES'T_MATCH"),
           });
         }
       } else {
-        return res.json({ message: res.__("WRONG_OTP") });
+        return res
+          .status(200)
+          .send({ status: true, message: res.__("YOUR_OTP_IS_EXPIRED") });
       }
     } else {
-      return res.json({ message: res.__("YOUR_OTP_IS_EXPIRED") });
+      return res
+        .status(200)
+        .send({ status: true, message: res.__("WRONG_OTP") });
     }
   } catch (error) {
     console.log(error);

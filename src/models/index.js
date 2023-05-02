@@ -38,8 +38,7 @@ Object.keys(db).forEach(modelName =>{
 })
 
 
-// db.category.hasMany(db.post,{foreignKey:'category_id'})
-// db.post.belongsTo(db.category)
+
 
 try {
     sequelize.authenticate();

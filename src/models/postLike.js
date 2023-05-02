@@ -1,4 +1,4 @@
-const {Sequelize,DataTypes,Model, INTEGER} = require('sequelize')
+const {Sequelize,DataTypes,Model} = require('sequelize')
 
 
 
@@ -11,11 +11,11 @@ class postLike extends Model{
 }
 postLike.init({
   user_id:{
-    type: INTEGER,
+    type: DataTypes.INTEGER,
     allowNull: false
   },
   post_id:{
-    type : INTEGER,
+    type : DataTypes.INTEGER,
     allowNull : false
   }
 },{

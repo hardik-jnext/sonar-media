@@ -4,7 +4,7 @@ const { Model, DataTypes } = require("sequelize");
 module.exports = (sequelize) => {
   class post extends Model {
     static associate(models){
-      models.user.hasOne(db.post,{foreignKey :'user_id'})
+      models.user.hasMany(db.post,{foreignKey :'user_id'})
       models.category.hasMany(db.post,{foreignKey:'category_id'})
     }
   }

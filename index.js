@@ -11,9 +11,13 @@ global.config = config
 const  hadleErrorMessage  = require('./src/middleware/errorHandle.js')
 
 
+
+
+
+
 app.use(body.json())
 
-db.sequelize.sync({alter : true})
+db.sequelize.sync({alter : false})
 
 
 app.use(i18n.init)
