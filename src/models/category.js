@@ -13,13 +13,9 @@ module.exports = (sequelize) => {
         values: Object.values(category.status),
         defaultValue: category.status.ACTIVE,
       },
-      post_id :{
-        type:DataTypes.INTEGER
-      },
       channel_id :{
         type:DataTypes.INTEGER
       }
-
     },
     {
       sequelize,

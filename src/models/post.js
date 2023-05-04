@@ -5,7 +5,11 @@ module.exports = (sequelize) => {
   class post extends Model {
     static associate(models){
       models.user.hasMany(db.post,{foreignKey :'user_id'})
+      post.belongsTo(db.user,{foreignKey: 'user_id'})
       models.category.hasMany(db.post,{foreignKey:'category_id'})
+      post.belongsTo(db.category,{foreignKey: 'category_id' })
+      models.subscription.hasMany(post,{foreignKey :"subscriptions_id"})
+      post.belongsTo(db.subscription,{foreignKey: "subscriptions_id"})
     }
   }
   post.init(

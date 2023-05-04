@@ -4,6 +4,8 @@ const body = require("body-parser")
 const db = require("./src/models/index.js")
 const userRouter = require('./src/routes/public/user.routes.js')
 const postRouter = require('./src/routes/public/post.routes.JS')
+const categoryRouter = require('./src/routes/public/category.routes.js')
+const subscriptionRouter = require("./src/routes/public/subscription.routes.js")
 const i18n = require("./src/helpers/i18n.helper.js")
 const env = process.env.NODE_ENV || "development"
 const config = require("./src/Config/config.json")[env]
@@ -24,8 +26,8 @@ app.use(i18n.init)
 
 app.use("/user",userRouter)
 app.use("/post",postRouter)
-
-
+app.use("/category",categoryRouter)
+app.use("/subscription",subscriptionRouter)
 
 app.use(hadleErrorMessage)
 
