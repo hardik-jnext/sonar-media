@@ -14,7 +14,7 @@ router.post("/create-post",userAuth,createPost)
 router.post('/upload-content',fileUpload,imageInsert)
 
 
-router.put("/post-update",userAuth,updatePost)
+router.put("/post-update/:post_id",userAuth,updatePost)
 
 
 router.delete("/post-delete/:id",postDelete)

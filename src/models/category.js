@@ -1,7 +1,13 @@
 const { DataTypes, Model } = require("sequelize");
 
 module.exports = (sequelize) => {
-  class category extends Model {}
+  class category extends Model {
+    static associate(models){
+    models.channel.hasMany(category,{foreignKey :'channel_id'})
+    category.belongsTo(db.channel,{foreignKey: 'channel_id'})
+
+  }
+}
   category.status = { ACTIVE: "active", DELETED: "deleted" };
   category.init(
     {

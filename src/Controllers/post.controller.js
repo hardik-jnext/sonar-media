@@ -26,7 +26,7 @@ const createPost = async (req, res) => {
     const create = await post.create({
       title: body.title,
       description: body.description,
-      category_id: 1,
+      category_id: 3,
       user_id: req.user.id,
       status: body.status,
       post_date: postDate,
@@ -63,10 +63,10 @@ const updatePost = async (req, res) => {
       {
         title: body.title,
         description: body.description,
-        category_id: 1,
+        category_id: 3,
         user_id: req.user.id,
       },
-      { where: { id: req.parmas.post_id } }
+      { where: { id: req.params.post_id } }
     );
     const contentArray = req.body.post_content;
     contentArray.forEach((result) => {
@@ -75,7 +75,7 @@ const updatePost = async (req, res) => {
           post_content: result.data,
           post_type: result.type,
         },
-        { where: { post_id: req.parmas.post_id } }
+        { where: { post_id: req.params.post_id } }
       );
       return res
         .status(200)
@@ -107,6 +107,7 @@ const postDelete = async (req, res) => {
     return res.status(400).send({ status: false, message: error.message });
   }
 };
+
 const deletecontent = async (req, res) => {
   try {
     const deleteContent = await postItem.destroy({

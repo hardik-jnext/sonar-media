@@ -4,10 +4,12 @@ module.exports = (sequelize)=>{
 class Template extends Model{}
 Template.init({
     template_name :{
-        type:DataTypes.STRING
+        type:DataTypes.STRING,
+        allowNull: false
     },
     description :{
-        type : DataTypes.STRING
+        type : DataTypes.STRING,
+        allowNull : false
     }
 },{
     sequelize,

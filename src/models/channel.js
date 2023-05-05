@@ -32,7 +32,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
       },
       about: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(512),
       },
       user_id: {
         type: DataTypes.INTEGER,
