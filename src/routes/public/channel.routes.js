@@ -8,6 +8,7 @@ const {
   gethome,
   feed,
   getSubscription,
+  getcardDetail
 } = require("../../Controllers/channel.controller.js");
 const fileUpload = require("../../middleware/fileUpload.js");
 const userAuth = require("../../middleware/userAuth.js");
@@ -27,5 +28,7 @@ router.get("/channel-home", gethome);
 router.get("/feed", userAuth, feed);
 
 router.get("/subscription", getSubscription);
+
+router.post('/card-detail',userAuth,getcardDetail )
 
 module.exports = router;

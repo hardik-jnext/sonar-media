@@ -2,7 +2,6 @@ const db = require("../models/index.js");
 const user = db.user;
 const secretkey = "token";
 const moment = require("moment");
-const { Op } = require("sequelize");
 const jwt = require("jsonwebtoken");
 const sendMail = require("../helpers/sendMail.helper.js");
 const {
@@ -10,6 +9,10 @@ const {
   passwordEncrpt,
   comparePassword,
 } = require("../helpers/utils.js");
+var Secret_Key = process.env.STRIPE_SECRET_KEY;
+const stripe = require("stripe")(Secret_Key);
+require("dotenv").config();
+
 
 const userRegistration = async (req, res) => {
   try {
@@ -46,6 +49,7 @@ const userRegistration = async (req, res) => {
     } else {
       if (body.password == body.repeatpassword) {
         let expireDate = moment().add(5, "minutes");
+
         const createUser = await user.create({
           firstname: body.firstname,
           lastname: body.lastname,
@@ -86,6 +90,17 @@ const userlogin = async (req, res) => {
       return res.json({ message: res.__("NOT_REGISTERED") });
     }
     if (await comparePassword(findRecord.password, req.body.password)) {
+      if (!findRecord.stripe_id) {
+        const customer = await stripe.customers.create({});
+        await user.update(
+          { stripe_id: customer.id },
+          {
+            where: {
+              id: findRecord.id,
+            },
+          }
+        );
+      }
       let token = jwt.sign(findRecord, secretkey);
       return res.json({ message: token });
     } else {

@@ -21,7 +21,7 @@ const  hadleErrorMessage  = require('./src/middleware/errorHandle.js')
 
 app.use(body.json())
 
-db.sequelize.sync({alter :false})
+db.sequelize.sync({alter : false})
 
 
 app.use(i18n.init)
@@ -33,7 +33,11 @@ app.use("/subscription",subscriptionRouter)
 app.use("/channel",channelRouter)
 app.use("/template",tempalteRouter)
 
-   
+
+
+
+
+
 
 app.use(hadleErrorMessage)
 

@@ -17,8 +17,16 @@ const templateCreation = async (req, res) => {
 };
 
 
+const templateList = async (req, res) => {
+  try {
+    const templateList = await template.findAll();
+    return res.status(200).send({ status: true, message: templateList });
+  } catch (error) {
+    console.log(error)
+    return res.status(400).send({ status: false, message: error.message });
+  }
+};
 
 
 
-
-module.exports = {templateCreation}
+module.exports = {templateCreation,templateList}

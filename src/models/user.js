@@ -36,6 +36,9 @@ user.init({
   },is_verify : {
       type : DataTypes.BOOLEAN,
       defaultValue : 0 
+  },
+  stripe_id :{
+   type : DataTypes.STRING
   }
 }, {
   sequelize, 
